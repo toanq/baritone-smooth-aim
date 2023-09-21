@@ -211,9 +211,9 @@ public final class LookBehavior extends Behavior implements ILookBehavior {
         public final Rotation peekRotation(final Rotation rotation) {
             final Rotation prev = this.getPrevRotation();
 			
-			float oldYaw = Math.round(ctx.player().rotationYaw);
+			float oldYaw = Math.round(prev.getYaw());
             float desiredYaw = Math.round(rotation.getYaw());
-			float oldPitch = Math.round(ctx.player().rotationPitch);
+			float oldPitch = Math.round(prev.getPitch());
             float desiredPitch = Math.round(rotation.getPitch());
 			float difYaw = (desiredYaw - oldYaw) / Math.round(Baritone.settings().smoothAim.value + Math.random());
             float difPitch = (desiredPitch - oldPitch) / Math.round(Baritone.settings().smoothAim.value + Math.random());
