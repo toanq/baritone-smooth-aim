@@ -376,6 +376,12 @@ public final class Settings {
      * How many degrees to randomize the yaw every tick. Set to 0 to disable
      */
     public final Setting<Double> randomLooking113 = new Setting<>(2d);
+	
+	/**
+     * Enable smooth aim while mining/building. Aim is updated per tick (20 = 1 second)
+     * set to 1 to disable.
+     */
+    public final Setting<Float> smoothAim = new Setting<>(1f);
 
     /**
      * Block reach distance

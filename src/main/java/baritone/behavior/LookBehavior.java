@@ -210,9 +210,20 @@ public final class LookBehavior extends Behavior implements ILookBehavior {
         @Override
         public final Rotation peekRotation(final Rotation rotation) {
             final Rotation prev = this.getPrevRotation();
-
-            float desiredYaw = rotation.getYaw();
-            float desiredPitch = rotation.getPitch();
+			
+			float oldYaw = Math.round(ctx.player().rotationYaw);
+            float desiredYaw = Math.round(rotation.getYaw());
+			float oldPitch = Math.round(ctx.player().rotationPitch);
+            float desiredPitch = Math.round(rotation.getPitch());
+			float difYaw = (desiredYaw - oldYaw) / Math.round(Baritone.settings().smoothAim.value + Math.random());
+            float difPitch = (desiredPitch - oldPitch) / Math.round(Baritone.settings().smoothAim.value + Math.random());
+			
+			if (ctx.player().rotationYaw != desiredYaw) {
+                desiredYaw = difYaw;
+            }
+            if (ctx.player().rotationPitch != desiredPitch) {
+                desiredPitch = difPitch;
+            }
 
             // In other words, the target doesn't care about the pitch, so it used playerRotations().getPitch()
             // and it's safe to adjust it to a normal level
