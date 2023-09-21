@@ -218,10 +218,10 @@ public final class LookBehavior extends Behavior implements ILookBehavior {
 			float difYaw = (desiredYaw - oldYaw) / Math.round(Baritone.settings().smoothAim.value + Math.random());
             float difPitch = (desiredPitch - oldPitch) / Math.round(Baritone.settings().smoothAim.value + Math.random());
 			
-			if (ctx.player().rotationYaw != desiredYaw) {
+			if (prev.getYaw() != desiredYaw) {
                 desiredYaw = difYaw;
             }
-            if (ctx.player().rotationPitch != desiredPitch) {
+            if (prev.getPitch() != desiredPitch) {
                 desiredPitch = difPitch;
             }
 
